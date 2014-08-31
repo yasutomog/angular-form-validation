@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html ng-app="ValidApp">
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="css/bootstrap.css" />
+    <link rel="stylesheet" href="css/style.css" />
+    <script src="libs/angular.js"></script>
+</head>
+<body ng-controller="ValidController">
+<div class="container">
+
+    <div class="page-header">
+        <h1>Angular JS Form Validation</h1>
+    </div>
+
+    <form name="userInfoForm" ng-submit="submitForm(userInfoForm.$valid)" novalidate>
+
+        <div class="form-group" ng-class="{ 'has-error' : userInfoForm.name.$invalid && !userInfoForm.name.$pristine }">
+            <label>Name*</label>
+            <input type="text" name="name" class="form-control" ng-model="user.name" required>
+            <p ng-show="userInfoForm.name.$invalid && !userInfoForm.name.$pristine" class="help-block">必須入力です</p>
+        </div>
+
+
+        <div class="form-group" ng-class="{ 'has-error' : userInfoForm.username.$invalid && !userInfoForm.username.$pristine }">
+            <label>Username</label>
+            <input type="text" name="username" class="form-control" ng-model="user.username" ng-minlength="3" ng-maxlength="8" required>
+            <p ng-show="userInfoForm.username.$error.minlength" class="help-block">ユーザ名が短いです</p>
+            <p ng-show="userInfoForm.username.$error.maxlength" class="help-block">ユーザ名が長いです</p>
+            <p ng-show="userInfoForm.username.$error.required && !userInfoForm.username.$pristine" class="help-block">必須入力です</p>
+        </div>
+
+
+        <div class="form-group" ng-class="{ 'has-error' : userInfoForm.email.$invalid && !userInfoForm.email.$pristine }" required>
+            <label>Email</label>
+            <input type="email" name="email" class="form-control" ng-model="user.email">
+            <p ng-show="userInfoForm.email.$invalid && !userInfoForm.email.$pristine" class="help-block">メールアドレスの形式が不正です</p>
+        </div>
+
+        <button type="submit" class="btn btn-primary" ng-disabled="userInfoForm.$invalid">Submit</button>
+
+    </form>
+
+</div>
+<script>
+    var ValidApp = angular.module('ValidApp', []);
+    ValidApp.controller('ValidController', function($scope) {
+        $scope.submitForm = function(isValid) {
+            if (isValid) {
+                //Persist data
+            }
+        };
+    });
+</script>
+</body>
+
+</html>
