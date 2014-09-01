@@ -1,7 +1,11 @@
 var ValidApp = angular.module('ValidApp', []);
-ValidApp.controller('ValidController', function($scope) {
+ValidApp.controller('ValidController', ['$scope', function($scope) {
 
-    var me = this;
+	$scope.user = {
+		name: '',
+		username: '',
+		email: ''
+	};
 
     $scope.submitForm = function(isValid) {
         if (isValid) {
@@ -9,8 +13,8 @@ ValidApp.controller('ValidController', function($scope) {
         }
     };
 
-    me.send = function() {
-        var me = this;
-        alert(me.user.name + '::' + me.user.username + '::' + me.user.email);
+    $scope.send = function() {
+        debugger;
+        alert($scope.user.name + '::' + $scope.user.username + '::' + $scope.user.email);
     };
-});
+}]);
