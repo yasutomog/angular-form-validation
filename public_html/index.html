@@ -38,6 +38,34 @@
             <p ng-show="userInfoForm.email.$error.email && !userInfoForm.email.$pristine" class="help-block">メールアドレスの形式が不正です</p>
         </div>
 
+
+        <div class="form-group" ng-class="{ 'has-error' : userInfoForm.user.radioNum.$invalid && !userInfoForm.user.radioNum.$pristine }" required>
+            <label class="checkbox-inline">
+                <input type="checkbox" id="inlineCheckbox1" value="option1" ng-model="user.checkNum1"> 1
+            </label>
+            <label class="checkbox-inline">
+                <input type="checkbox" id="inlineCheckbox2" value="option2" ng-model="user.checkNum2"> 2
+            </label>
+            <label class="checkbox-inline">
+                <input type="checkbox" id="inlineCheckbox3" value="option3" ng-model="user.checkNum3"> 3
+            </label>
+            <p ng-show="userInfoForm.user.radioNum.$error.$invalid" class="help-block">チェックボックスが不正です</p>
+        </div>
+
+
+        <div class="form-group" ng-class="{ 'has-error' : vc.user.radioNum.$invalid && !vc.user.radioNum.$pristine }" required>
+            <label class="radio-inline">
+                <input type="radio" name="inlineRadioOptions" id="inlineRadio1" value="option1" ng-model="user.radioNum"> 1
+            </label>
+            <label class="radio-inline">
+                <input type="radio" name="inlineRadioOptions" id="inlineRadio2" value="option2" ng-model="user.radioNum"> 2
+            </label>
+            <label class="radio-inline">
+                <input type="radio" name="inlineRadioOptions" id="inlineRadio3" value="option3" ng-model="user.radioNum"> 3
+            </label>
+            <p ng-show="vc.email.$error.$invalid" class="help-block">ラジオボタンが不正です</p>
+        </div>
+
         <button class="btn btn-info" ng-disabled="inUnChanged(user)" ng-click="reset()">リセット</button>
         <button type="submit" class="btn btn-primary" ng-disabled="userInfoForm.$invalid || isUnchanged(user)" ng-click="send(user)">送信</button>
 
