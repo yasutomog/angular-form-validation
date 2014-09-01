@@ -35,11 +35,11 @@
         <div class="form-group" ng-class="{ 'has-error' : userInfoForm.email.$invalid && !userInfoForm.email.$pristine }" required>
             <label>Email</label>
             <input type="email" name="email" class="form-control" ng-model="user.email">
-            <p ng-show="userInfoForm.email.$invalid && !userInfoForm.email.$pristine" class="help-block">メールアドレスの形式が不正です</p>
+            <p ng-show="userInfoForm.email.$error.email && !userInfoForm.email.$pristine" class="help-block">メールアドレスの形式が不正です</p>
         </div>
 
         <button class="btn btn-info" ng-disabled="inUnChanged(user)" ng-click="reset()">リセット</button>
-        <button type="submit" class="btn btn-primary" ng-disabled="userInfoForm.$invalid" ng-click="send(user)">送信</button>
+        <button type="submit" class="btn btn-primary" ng-disabled="userInfoForm.$invalid || isUnchanged(user)" ng-click="send(user)">送信</button>
 
     </form>
 
