@@ -24,10 +24,10 @@
 
 
         <div class="form-group" ng-class="{ 'has-error' : userInfoForm.username.$invalid && !userInfoForm.username.$pristine }">
-            <label>Username</label>
+            <label>Username*</label>
             <input type="text" name="username" class="form-control" ng-model="user.username" ng-minlength="3" ng-maxlength="8" required>
-            <p ng-show="userInfoForm.username.$error.minlength" class="help-block">ユーザ名が短いです</p>
-            <p ng-show="userInfoForm.username.$error.maxlength" class="help-block">ユーザ名が長いです</p>
+            <p ng-show="userInfoForm.username.$error.minlength" class="help-block">ユーザ名は3文字以上で入力してください</p>
+            <p ng-show="userInfoForm.username.$error.maxlength" class="help-block">ユーザ名は8文字以下で入力してください</p>
             <p ng-show="userInfoForm.username.$error.required && !userInfoForm.username.$pristine" class="help-block">必須入力です</p>
         </div>
 
@@ -38,7 +38,8 @@
             <p ng-show="userInfoForm.email.$invalid && !userInfoForm.email.$pristine" class="help-block">メールアドレスの形式が不正です</p>
         </div>
 
-        <button type="submit" class="btn btn-primary" ng-disabled="userInfoForm.$invalid" ng-click="send()">送信</button>
+        <button class="btn btn-info" ng-disabled="inUnChanged(user)" ng-click="reset()">リセット</button>
+        <button type="submit" class="btn btn-primary" ng-disabled="userInfoForm.$invalid" ng-click="send(user)">送信</button>
 
     </form>
 
