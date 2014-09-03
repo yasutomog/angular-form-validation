@@ -4,7 +4,16 @@ ValidApp.controller('ValidController', ['$scope', function($scope) {
 	$scope.defUser = {
 		name: 'koichi sato',
 		username: '',
-		email: ''
+		email: '',
+		checkNum: {
+			one: false,
+			two: false,
+			three: false
+		},
+		gender: undefined,
+		comment: '',
+		family: undefined
+
 	};
 
     $scope.submitForm = function(isValid) {
@@ -22,7 +31,7 @@ ValidApp.controller('ValidController', ['$scope', function($scope) {
     };
 
     $scope.send = function(user) {
-        alert($scope.user.name + '::' + $scope.user.username + '::' + $scope.user.email);
+        alert(angular.toJson($scope.user));
         $scope.defUser = angular.copy(user);
     };
 

@@ -39,32 +39,49 @@
         </div>
 
 
-        <div class="form-group" ng-class="{ 'has-error' : userInfoForm.user.radioNum.$invalid && !userInfoForm.user.radioNum.$pristine }" required>
+        <div class="form-group">
+            <label>Number</label>
             <label class="checkbox-inline">
-                <input type="checkbox" id="inlineCheckbox1" value="option1" ng-model="user.checkNum1"> 1
+                <input type="checkbox" name="checkNum" ng-model="user.checkNum.one"> 1
             </label>
             <label class="checkbox-inline">
-                <input type="checkbox" id="inlineCheckbox2" value="option2" ng-model="user.checkNum2"> 2
+                <input type="checkbox" name="checkNum" ng-model="user.checkNum.two"> 2
             </label>
             <label class="checkbox-inline">
-                <input type="checkbox" id="inlineCheckbox3" value="option3" ng-model="user.checkNum3"> 3
+                <input type="checkbox" name="checkNum" ng-model="user.checkNum.three"> 3
             </label>
-            <p ng-show="userInfoForm.user.radioNum.$error.$invalid" class="help-block">チェックボックスが不正です</p>
         </div>
 
 
-        <div class="form-group" ng-class="{ 'has-error' : vc.user.radioNum.$invalid && !vc.user.radioNum.$pristine }" required>
+        <div class="form-group">
+            <label>Gender*</label>
             <label class="radio-inline">
-                <input type="radio" name="inlineRadioOptions" id="inlineRadio1" value="option1" ng-model="user.radioNum"> 1
+                <input type="radio" name="gender" value="1" ng-model="user.gender" ng-required="!gender"> male
             </label>
             <label class="radio-inline">
-                <input type="radio" name="inlineRadioOptions" id="inlineRadio2" value="option2" ng-model="user.radioNum"> 2
+                <input type="radio" name="gender" value="2" ng-model="user.gender" ng-required="!gender"> female
             </label>
             <label class="radio-inline">
-                <input type="radio" name="inlineRadioOptions" id="inlineRadio3" value="option3" ng-model="user.radioNum"> 3
+                <input type="radio" name="gender" value="3" ng-model="user.gender" ng-required="!gender"> other
             </label>
-            <p ng-show="vc.email.$error.$invalid" class="help-block">ラジオボタンが不正です</p>
         </div>
+
+
+        <div class="form-group" ng-class="{ 'has-error' : userInfoForm.family.$invalid && !userInfoForm.family.$pristine }">
+            <label>Family</label>
+            <input class="form-control" type="number" name="family" ng-model="user.family" min="1" max="10">
+            <p ng-show="userInfoForm.family.$error.min" class="help-block">1以上の数値を指定して下さい</p>
+            <p ng-show="userInfoForm.family.$error.max" class="help-block">10以下の数値を指定して下さい</p>
+            <p ng-show="userInfoForm.family.$error.number" class="help-block">数値で入力して下さい</p>
+        </div>
+
+
+        <div class="form-group" ng-class="{ 'has-error' : userInfoForm.comment.$invalid && !userInfoForm.comment.$pristine }">
+            <label>Comment</label>
+            <textarea class="form-control" rows="3" name="comment" ng-model="user.comment" ng-maxlength="20" placeholder="コメント入力欄"></textarea>
+            <p ng-show="userInfoForm.comment.$invalid && !userInfoForm.comment.$pristine" class="help-block">20文字以下で入力して下さい</p>
+        </div>
+
 
         <button class="btn btn-info" ng-disabled="inUnChanged(user)" ng-click="reset()">リセット</button>
         <button type="submit" class="btn btn-primary" ng-disabled="userInfoForm.$invalid || isUnchanged(user)" ng-click="send(user)">送信</button>
