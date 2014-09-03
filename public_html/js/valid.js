@@ -12,7 +12,8 @@ ValidApp.controller('ValidController', ['$scope', function($scope) {
 		},
 		gender: undefined,
 		comment: '',
-		family: undefined
+		family: undefined,
+		english: ''
 
 	};
 

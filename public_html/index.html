@@ -76,6 +76,13 @@
         </div>
 
 
+        <div class="form-group" ng-class="{ 'has-error' : userInfoForm.english.$invalid && !userInfoForm.english.$pristine }">
+            <label>English</label>
+            <input class="form-control" type="text" name="english" ng-model="user.english" ng-pattern="/^[a-zA-Z]*$/">
+            <p ng-show="userInfoForm.english.$error.pattern" class="help-block">英字で入力して下さい</p>
+        </div>
+
+
         <div class="form-group" ng-class="{ 'has-error' : userInfoForm.comment.$invalid && !userInfoForm.comment.$pristine }">
             <label>Comment</label>
             <textarea class="form-control" rows="3" name="comment" ng-model="user.comment" ng-maxlength="20" placeholder="コメント入力欄"></textarea>
