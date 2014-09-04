@@ -1,2 +1,18 @@
-Angular Form Validation Sample.
+# Angular Form Validation Sample.
 
+## チェック内容
+
+* 必須入力  
+* 最小文字列数  
+* 最大文字列数  
+* 複数項目の一致  
+* メールアドレス  
+* ラジオボタンの必須  
+* 数値入力  
+* アルファベット入力  
+* 電話番号  
+
+## 動作制御
+
+* リセットボタン  
+* submitボタン
