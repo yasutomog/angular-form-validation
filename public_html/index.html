@@ -32,6 +32,18 @@
         </div>
 
 
+        <div class="form-group" ng-class="{ 'has-error' : userInfoForm.password.$invalid && !userInfoForm.password.$pristine }">
+            <label>Password*</label>
+            <input type="text" name="password" class="form-control" ng-model="user.password" required>
+            <p ng-show="userInfoForm.password.$error.required && !userInfoForm.password.$pristine" class="help-block">必須入力です</p>
+        </div>
+        <div class="form-group" ng-class="{ 'has-error' : userInfoForm.password2.$invalid && !userInfoForm.password2.$pristine }">
+            <label>Password(confirm)*</label>
+            <input type="text" name="password2" class="form-control" ng-model="user.password2" match="user.password">
+            <p ng-show="userInfoForm.password2.$error.match" class="help-block">パスワードが一致していません</p>
+        </div>
+
+
         <div class="form-group" ng-class="{ 'has-error' : userInfoForm.email.$invalid && !userInfoForm.email.$pristine }" required>
             <label>Email</label>
             <input type="email" name="email" class="form-control" ng-model="user.email">
@@ -80,6 +92,13 @@
             <label>English</label>
             <input class="form-control" type="text" name="english" ng-model="user.english" ng-pattern="/^[a-zA-Z]*$/">
             <p ng-show="userInfoForm.english.$error.pattern" class="help-block">英字で入力して下さい</p>
+        </div>
+
+
+        <div class="form-group" ng-class="{ 'has-error' : userInfoForm.phone.$invalid && !userInfoForm.phone.$pristine }">
+            <label>Phone</label>
+            <input class="form-control" type="text" name="phone" ng-model="user.phone" ng-pattern="/^[(]{0,1}[0-9]{3}[)\.\- ]{0,1}[0-9]{3}[\.\- ]{0,1}[0-9]{4}$/">
+            <p ng-show="userInfoForm.phone.$error.pattern" class="help-block">000-111-2222の形式で入力して下さい</p>
         </div>
 
 

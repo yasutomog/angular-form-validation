@@ -1,5 +1,5 @@
-var ValidApp = angular.module('ValidApp', []);
-ValidApp.controller('ValidController', ['$scope', function($scope) {
+var validApp = angular.module('ValidApp', []);
+validApp.controller('ValidController', ['$scope', function($scope) {
 
 	$scope.defUser = {
 		name: 'koichi sato',
@@ -13,9 +13,11 @@ ValidApp.controller('ValidController', ['$scope', function($scope) {
 		gender: undefined,
 		comment: '',
 		family: undefined,
-		english: ''
-
+		english: '',
+		password: '',
+		password2: '',
 	};
+
 
     $scope.submitForm = function(isValid) {
         if (isValid) {
@@ -38,4 +40,26 @@ ValidApp.controller('ValidController', ['$scope', function($scope) {
 
     $scope.reset();
 
-}]);
+}])
+
+.directive('match', function() {
+	return {
+		require: 'ngModel',
+		link: function(scope, elem, attrs, modelCtrl) {
+			return modelCtrl.$parsers.push(function(viewValue) {
+
+				var val;
+				if (attrs.match == null) {
+					return viewValue;
+				}
+				val = scope.$eval(attrs.match);
+				if (val !== viewValue) {
+					modelCtrl.$setValidity("match", false);
+				} else {
+					modelCtrl.$setValidity("match", true);
+				}
+				return viewValue;	
+			});
+		}
+	};
+});
