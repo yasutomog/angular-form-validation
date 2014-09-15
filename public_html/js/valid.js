@@ -15,7 +15,7 @@ validApp.controller('ValidController', ['$scope', function($scope) {
 		family: undefined,
 		english: '',
 		password: '',
-		password2: '',
+		password2: ''
 	};
 
 
